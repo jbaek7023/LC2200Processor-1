@@ -1,0 +1,97 @@
+Name:Jae Min Baek	
+GTID:903012556
+GT E-Mail:jbaek60@gatech.edu
+
+List Your Control Signals Here In The Following Format:
+Bit Number | Control Signal | Description
+-----------------------------------------
+     0     | s0             | State Bit 0        
+     1     | s1             | State Bit 1 
+     2     | s2 	    | State Bit 2
+     3     | s3    	    | State Bit 3
+     4     | s4		    | State Bit 4
+     5     | s5  	    | State Bit 5
+     6     | DrREG	    | Drive Register Signal
+     7     | DrMEM 	    | Drive Memory Signal
+     8     | DrALU	    | Drive ALU Signal
+     9     | DrPC 	    | Drive Program Counter Signal
+     a	   | DrOFF	    | Drive OFFSET Signal
+     a     | LdPC	    | Load PC Signal
+     b     | LdIR	    | Load Instruction Signal
+     c     | LdMAR	    | Load MAR Signal
+     d     | LdA	    | Load A Signal
+     e     | LdB	    | Load B Signal
+     f     | LdZ	    | Load Z Signal
+    10     | WrREQ	    | Write Registers signal
+    11     | WrMEM	    | Write Memory Signal
+    12     | Reg# (Low)	    | register selector
+    13     | Reg# (High)    | register selector
+    14     | FUNC (Low)     | ALU function selector
+    15     | FUNC (High)    | ALU function selector
+    16     | OPTest	    | Op Test
+    17     | chkZ    	    | Check zero ditection
+    18     | enable         | load enable
+    19     | NotUsed	    | Not Used Control Signal	
+    1a     | IntAct	    | IntAct
+
+State Machine: 
+FETCH_0 -> FETCH_1 -> FETCH_2 -> FETCH->3
+(All the cycles starts from FETCH completed)
+
+ADD_0 -> ADD_1 -> ADD_2 -> FETCH_0
+NAND_0 -> NAND_1- > NAND_2 -> FETCH_0
+ADDI_0 -> ADDI_1 -> ADDI_2 -> FETCH_0
+BEQ_0 -> BEQ_1 -> BEQ_2 -> BEQ_3 -> BEQ_4(Z==1) -> BEQ_5 -> BEQ_6 -> BEQ7(Z==0) -> FETCH_0
+LW_0 -> LW_1 -> LW_2 -> LW_3 -> FETCH_0
+SW_0 -> SW_1 -> SW_2 -> SW_3 -> FETCH_0
+JALR_0 -> JALR_1 -> FETCH_0
+HALT_0
+ADDM_0 -> ADDM_1 -> ADDM_2-> ADDM_3 -> FETCH_0
+SUB_0 -> SUB_1 -> SUB_2 -> FETCH_0
+INCR_0 -> INCR_1 -> FETCH_0
+
+// Finally, enter in the ROM contents here:
+State Number | Control Bit String | State name
+—————————————————————————————————————————————
+   00        | 0006201 		  |FETCH_0
+   01        | 0001082 		  |FETCH_1
+   02        | 0600903   	  |FETCH_2	
+   03 	     | 0800000		  |FETCH_3
+   04        | 0084045     	  |ADD_0
+   05        | 0108046		  |ADD_1
+   06        | 0020100 		  |ADD_2
+   07        | 0084048 		  |NAND_0
+   08        | 0108049		  |NAND_1	
+   09        | 0220100		  |NAND_2
+   0a        | 008404b 		  |ADDI_0
+   0b        | 000840c		  |ADDI_1
+   0c        | 0020100		  |ADDI_2
+   0d        | 000404e 		  |BEQ_0
+   0e        | 008804f		  |BEQ_1
+   0f        | 1000000		  |BEQ_2
+   10        | 0410111 		  |BEQ_3
+   11        | 0004212		  |BEQ_4
+   12        | 0008413		  |BEQ_5
+   13        | 0000900		  |BEQ_6
+   14        | 0000000		  |BEQ_7
+   15        | 0084056 		  |LW_0
+   16        | 0008417		  |LW_1
+   17        | 0002118		  |LW_2
+   18        | 0020080		  |LW_3
+   19        | 008405a		  |SW_0
+   1a        | 000841b		  |SW_1
+   1b        | 000211c		  |SW_2
+   1c        | 0040040		  |SW_3
+   1d        | 00a021e		  |JALR_0
+   1e        | 0000840		  |JALR_1
+   1f        | 000001f  	  |HALT_0
+   20        | 0082061		  |ADDM_0
+   21        | 00040a2		  |ADDM_1
+   22        | 0008063		  |ADDM_2
+   23        | 0040100		  |ADDM_3
+   24        | 0084065		  |SUB_0
+   25        | 0108066		  |SUB_1
+   26        | 0420100		  |SUB_2
+   27        | 0084068		  |INC_0
+   28        | 0620100		  |INC_1
+   

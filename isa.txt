@@ -1,0 +1,48 @@
+Name:Jae Min Baek	
+GTID:903012556
+GT E-Mail:jbaek60@gatech.edu
+
+Number of Registers: 11 
+
+
+R-Type Format (For Register-Type Instructions):
+-Note that these are things like ADD, NAND, ect.
+ bits 31-28: 	opcode
+ bits 27-24: 	reg X
+ bits 23-20: 	reg Y
+ bits 19-4:  	unused (should be all 0s)
+ bits 3-0:  	 reg Z
+
+I-Type Format (For Instructions with immediate operands and offsets):
+-Note that these are things like LW, SW, ADDI, BEQ, ect.
+ bits 31-28: 	opcode
+ bits 27-24: 	reg X
+ bits 23-20: 	reg Y
+ bits 19-0:  	Immediate value or address offset (a 20-bit, 2s complement number with a range of -524288 to +524287)
+
+J-Type Format (For Jump Instructions):
+-Note that these are thigns like JALR
+ bits 31-28: 	opcode
+ bits 27-24: 	reg X (target of the jump)
+ bits 23-20: 	reg Y (link register) 
+ bits 19-0:  	unused (should be all 0s)
+
+   Instruction   |      Format     |   Description   
+----------------------------------------------------------------------
+    ADD          | ADD RZ, RX, RY  |  RZ = RX + RY
+    NAND         | NAND RZ, RX, RY |  RZ = RX NAND RY
+    ADDI	 | ADDI RZ, RX, off|  RZ = RX + off         
+    LW		 | LW RZ, RX, (off)|  RZ = mem[RX+SIGN_EXTENDED(off)]
+    SW           | SW RZ, RX, (off)|  mem[RX+SIGN_EXTENDED(off)] = RZ    
+    BEQ          | BEQ RZ, RX, off |  if(RZ==RX) PC=(PC+1)+SIGNED_EXTENDED(off) 
+    JALR         | JALR RZ, RX     |  RX=PC+1 PC=RZ              
+    HALT         | HALT		   |  Halts the processor.
+    ADDM	 | ADDM Rx, Ry     |  MEM[Ry]<- MEM[Ry]+Rx
+    SUB          | SUB RZ, RX, XY  |  RZ = RX - RY
+    INC          | INC RX          |  RX = RX + 1
+    
+%off=offset
+
+
+
+ 
