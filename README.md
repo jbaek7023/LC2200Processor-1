@@ -1,7 +1,10 @@
 # LC 2200 Computer
-Instruction Set Architecture (ISA), Multi-Cycle Processor (Datapath), and Interrupt (HW & Microcontroller support)
+Implementation: 
+1. Instruction Set Architecture (ISA)
+2. Multi-Cycle Processor (Datapath)
+3. Interrupt (HW & Microcontroller support)
 
-This project is a part of assignment in CS 2200 (Systems and Networks)
+This project is a part of assignment for Systems and Networks (CS 2200)
 
 more detail : [Project I Instruction](project1.pdf), [Project II Instruction](project2.pdf)
 
